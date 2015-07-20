@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Prez</title>
+
+    <meta name="description" content="-- DESCRIPTION HERE --">
+    <meta name="author" content="sergiy-dragunov">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="css/highlight/styles/zenburn.css" id="highlight-theme">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <link rel="stylesheet" href="css/custom.css">
+
+  </head>
+
+  <body>
+
+    <div class="reveal">
+      <div class="slides"><section id="hello" class="slide">
+<h2>REST API</h2><p>REpresentational State Transfer</p>
+<p><img src="images/restful-api.jpg" alt=""></p>
+<p><small>Кожен запит від клієнта повинен містити всю інформацію, необхідну серверу для виконання запиту. Іншими словами, сервер не зобов&#39;язаний зберігати інформацію про стан клієнта (ніяких сесій)</small></p>
+</section>
+<section id="pros" class="slide">
+<h2>ПЛЮСИ</h2><ul>
+<li><p>надійність <small>(не потрібно зберігати стан клієнта, який можна втратити)</small></p>
+</li>
+<li><p>простіше масштабування <small>(сесії, лоад балансер)</small></p>
+</li>
+<li><p>стандартизований інтерфейс <small>(запити, відповіді, помилки)</small></p>
+</li>
+<li><p>по урл запиту легко зрозуміти які дані запитуються</p>
+</li>
+<li><p>...</p>
+</li>
+</ul>
+</section>
+<section id="resources" class="slide">
+<h2>API URLs</h2><ul>
+<li><p><strong>GET /cars</strong>          отримати список авто  </p>
+</li>
+<li><p><strong>POST /cars</strong>         створити нове авто     </p>
+</li>
+<li><p><strong>PUT /cars</strong>          оновити дані про авто     </p>
+</li>
+<li><p><strong>DELETE /cars</strong>       видалити всі авто</p>
+</li>
+<li><p><strong>GET /cars/711</strong>       отримати деталі конкретного авто</p>
+</li>
+<li><p><strong>POST /cars/711</strong>      Method not allowed (405)</p>
+</li>
+<li><p><strong>PUT /cars/711</strong>       оновити інфо для конкретного авто</p>
+</li>
+<li><p><strong>DELETE /cars/711</strong>    видалити конкретне авто</p>
+</li>
+</ul>
+</section>
+<section id="best-practice" class="slide">
+<h2>Колекції/елементи</h2><ul>
+<li><p>використовувати в назві імена не дії</p>
+<p>  <strong>/cars</strong></p>
+<p>  <del>/getInfoAboutAllCars</del></p>
+</li>
+<li><p>назва в множині <small>(або в однині, але одне правило на всі колекції)</small></p>
+</li>
+<li><p>дії з колекцією/елементом передавати через HTTP method</p>
+<ul>
+<li>GET</li>
+<li>POST</li>
+<li>PUT</li>
+<li>DELETE</li>
+</ul>
+</li>
+<li><p>вкладені або повязані колекції</p>
+<p>  /users/123/tasks</p>
+<p>  /users/123/bugs</p>
+</li>
+<li><p>фільтр вихідних даних</p>
+<p>  /users/123?fields=id,name,email</p>
+</li>
+<li><p>можливість вернути одночасно дані, звязаної колекції</p>
+<p>  /users/123?expand=tasks</p>
+</li>
+<li><p>пейджинг, умовні фільтри</p>
+</li>
+<li><p>версіонуваня</p>
+<p>  /v1.2/cars/</p>
+<p>  /2015-07-24/cars/</p>
+<p>  /cars/    + headers v1.2</p>
+<p>  /cars?version=1.2</p>
+</li>
+<li><p>формат даних</p>
+<p>  Headers: Content-type: application/json</p>
+<p>  /cars.json</p>
+<p>  /cars?format=xml</p>
+</li>
+</ul>
+</section>
+<section id="goodbye" class="slide">
+<h2>Goodbye</h2><p>Don&#39;t hesitate to give us feedback about <a href="https://github.com/lmtm/prez">prez on GitHub</a>!</p>
+<p>Thanks</p>
+</section></div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+
+      transition: Reveal.getQueryHash().transition || 'slide', // none/fade/slide/convex/concave/zoom
+
+      // Optional reveal.js plugins
+      dependencies: [
+        //{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        //{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        //{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true },
+        { src: 'plugin/notes/notes.js', async: true }
+      ]
+    });
+    </script>
+
+    <script src="js/dynamic-theme.js"></script><script src="js/custom.js"></script>
+
+  </body>
+</html>
