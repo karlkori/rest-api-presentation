@@ -1,4 +1,4 @@
-## REST API
+# REST API
 
 REpresentational State Transfer
 

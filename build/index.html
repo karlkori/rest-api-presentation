@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Prez</title>
+    <title>Rest API</title>
 
     <meta name="description" content="-- DESCRIPTION HERE --">
-    <meta name="author" content="sergiy-dragunov">
+    <meta name="author" content="-- AUTHOR HERE --">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -15,10 +15,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
     <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+    <link rel="stylesheet" href="css/theme/league.css" id="theme">
 
     <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="css/highlight/styles/zenburn.css" id="highlight-theme">
+    <link rel="stylesheet" href="css/highlight/styles/androidstudio.css" id="highlight-theme">
 
     <!-- Printing and PDF exports -->
     <script>
@@ -37,7 +37,7 @@
 
     <div class="reveal">
       <div class="slides"><section id="hello" class="slide">
-<h2>REST API</h2><p>REpresentational State Transfer</p>
+<h1>REST API</h1><p>REpresentational State Transfer</p>
 <p><img src="images/restful-api.jpg" alt=""></p>
 <p><small>Кожен запит від клієнта повинен містити всю інформацію, необхідну серверу для виконання запиту. Іншими словами, сервер не зобов&#39;язаний зберігати інформацію про стан клієнта (ніяких сесій)</small></p>
 </section>
@@ -49,19 +49,81 @@
 </li>
 <li><p>стандартизований інтерфейс <small>(запити, відповіді, помилки)</small></p>
 </li>
-<li><p>по урл запиту легко зрозуміти які дані запитуються</p>
-</li>
-<li><p>...</p>
+<li><p>по URL запиту легко зрозуміти які дані запитуються</p>
 </li>
 </ul>
 </section>
 <section id="resources" class="slide">
-<h2>API URLs</h2><ul>
-<li><p><strong>GET /cars</strong>          отримати список авто  </p>
+<h3>Колекції / елементи</h3><ul>
+<li><p>api.domain.ua/<strong>customers</strong></p>
 </li>
-<li><p><strong>POST /cars</strong>         створити нове авто     </p>
+<li><p>api.domain.ua/<strong>customers/345</strong></p>
 </li>
-<li><p><strong>PUT /cars</strong>          оновити дані про авто     </p>
+<li><p>api.domain.ua/<strong>invoices</strong></p>
+</li>
+<li><p>api.domain.ua/<strong>customers/345/subscriptons/</strong></p>
+</li>
+</ul>
+</section>
+<section id="actions" class="slide">
+<h2>Actions</h2><ul>
+<li><p><strong>GET /customers</strong>          <small> - отримати список клієнтів</small></p>
+</li>
+<li><p><strong>POST /customers</strong>         <small> - створити нового</small></p>
+</li>
+<li><p><strong>PUT /customers</strong>          <small> - оновити дані</small></p>
+</li>
+<li><p><strong>DELETE /customers</strong>       <small> - видалити всіх</small></p>
+</li>
+<li><p><strong>GET /customers/711</strong>       <small> - отримати інформацію про клієнта</small></p>
+</li>
+<li><p><strong>POST /customers/711</strong></p>
+</li>
+<li><p><strong>PUT /customers/711</strong>       <small> - оновити інформацію клієнта</small></p>
+</li>
+<li><p><strong>DELETE /customers/711</strong>    <small> - видалити клієнта</small></p>
+</li>
+</ul>
+</section>
+<section>
+<section id="best-practice-names" class="slide">
+<h2>Best practice</h2><h4>Використовувати в назві імена, не дії</h4><ul>
+<li><p><img src="images/ok.png" alt=""> <strong>/subscriptions</strong></p>
+</li>
+<li><p><img src="images/wrong.png" alt=""> /subscribe</p>
+</li>
+<li><p><img src="images/wrong.png" alt=""> /getInfoAboutAllCars</p>
+</li>
+</ul>
+</section>
+</section>
+<section id="goodbye" class="slide">
+<h2>Goodbye</h2><p>Don&#39;t hesitate to give us feedback about <a href="https://github.com/lmtm/prez">prez on GitHub</a>!</p>
+<p>Thanks</p>
+</section>
+<section id="best-practice" class="slide">
+<h2>Колекції/елементи</h2><ul>
+<li><p>використовувати в назві імена, не дії</p>
+<p>  <strong>/cars</strong></p>
+<p>  <del>/getInfoAboutAllCars</del></p>
+</li>
+<li><p>назва в множині <small>(або в однині, але одне правило на всі колекції)</small></p>
+</li>
+<li><p>дії з колекцією/елементом передавати через HTTP method</p>
+<ul>
+<li>GET - лише вертає дані, нічого не змінює!</li>
+<li>POST</li>
+<li>PUT - оновлення конкретних даних, багаторазовий виклик не має змінювати дані по рзному</li>
+<li>DELETE - багаторазове повторення не повинно мати ефекту<h2>API URLs</h2></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>GET /cars</strong>          отримати список авто</p>
+</li>
+<li><p><strong>POST /cars</strong>         створити нове авто</p>
+</li>
+<li><p><strong>PUT /cars</strong>          оновити дані про авто</p>
 </li>
 <li><p><strong>DELETE /cars</strong>       видалити всі авто</p>
 </li>
@@ -73,24 +135,6 @@
 </li>
 <li><p><strong>DELETE /cars/711</strong>    видалити конкретне авто</p>
 </li>
-</ul>
-</section>
-<section id="best-practice" class="slide">
-<h2>Колекції/елементи</h2><ul>
-<li><p>використовувати в назві імена не дії</p>
-<p>  <strong>/cars</strong></p>
-<p>  <del>/getInfoAboutAllCars</del></p>
-</li>
-<li><p>назва в множині <small>(або в однині, але одне правило на всі колекції)</small></p>
-</li>
-<li><p>дії з колекцією/елементом передавати через HTTP method</p>
-<ul>
-<li>GET</li>
-<li>POST</li>
-<li>PUT</li>
-<li>DELETE</li>
-</ul>
-</li>
 <li><p>вкладені або повязані колекції</p>
 <p>  /users/123/tasks</p>
 <p>  /users/123/bugs</p>
@@ -101,8 +145,38 @@
 <li><p>можливість вернути одночасно дані, звязаної колекції</p>
 <p>  /users/123?expand=tasks</p>
 </li>
-<li><p>пейджинг, умовні фільтри</p>
-</li>
+</ul>
+<pre><code class="lang-json">GET /task/123
+{
+    data: {
+        id: 123,
+        title: &#39;Buy a milk&#39;,
+        owner: &#39;usr_1234567890&#39;
+    }
+}
+
+GET /task/123?expand=owner
+{
+    data: {
+        id: 123,
+        title: &#39;Buy a milk&#39;,
+        owner: {
+            id: &#39;usr_1234567890&#39;,
+            name: &#39;John&#39;,
+            email: &#39;john@gmail.com&#39;
+        }
+    }
+}
+</code></pre>
+<ul>
+<li>пейджинг, умовні фільтри</li>
+</ul>
+<p>GET /cars?color=red Returns a list of red cars
+GET /cars?seats&lt;=2 Returns a list of cars with a maximum of 2 seats
+GET /cars?sort=-manufactorer,+model
+GET /cars?fields=manufacturer,model,id,color
+GET /cars?offset=10&amp;limit=5</p>
+<ul>
 <li><p>версіонуваня</p>
 <p>  /v1.2/cars/</p>
 <p>  /2015-07-24/cars/</p>
@@ -114,11 +188,58 @@
 <p>  /cars.json</p>
 <p>  /cars?format=xml</p>
 </li>
+<li><p>Use HTTP status codes</p>
+<p>  200 – OK</p>
+<p>  201 – OK + New resource has been created</p>
+<p>  400 – Bad Request – The request was invalid or cannot be served. The exact error should be explained in the error payload. E.g. „The JSON is not valid“</p>
+<p>  401 – Unauthorized – The request requires an user authentication</p>
+<p>  403 – Forbidden – The server understood the request, but is refusing it or the access is not allowed.</p>
+<p>  404 – Not found – There is no resource behind the URI.</p>
+<p>  405 - Method not allowed, used to indicate that the requested URL exists, but the requested HTTP method is not applicable.    </p>
+</li>
+<li><p>Example of error response:</p>
+</li>
 </ul>
-</section>
-<section id="goodbye" class="slide">
-<h2>Goodbye</h2><p>Don&#39;t hesitate to give us feedback about <a href="https://github.com/lmtm/prez">prez on GitHub</a>!</p>
-<p>Thanks</p>
+<pre><code class="lang-json">{
+  "<span class="hljs-attribute">error</span>": 
+   <span class="hljs-value">{
+        "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Sorry, the requested resource does not exist"</span></span>,
+        "<span class="hljs-attribute">developerMessage</span>": <span class="hljs-value"><span class="hljs-string">"No car found in the database"</span></span>,
+        "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">34</span></span>,
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"account-error"</span>
+        <span class="hljs-string">"moreInfo"</span>: <span class="hljs-string">"http://dev.example.com/api/v1/errors/34"</span>
+   </span>}
+</span>}
+</code></pre>
+<ul>
+<li><p>Make your IDs easily understood and descriptive:</p>
+<p>  job_d1a62016cba4ee83
+  obj_2d9b85fad42f64f8
+  adr_575a1b720bcdd6dc</p>
+</li>
+<li><p>Request IDs Header: Request-id: 123445678</p>
+</li>
+<li><p>for localization response</p>
+</li>
+</ul>
+<h1>client request data with EN translation</h1><p>Accept-Language: en</p>
+<h1>server response data</h1><p>Content-Language: en</p>
+<ul>
+<li><p>usefull page in documentation: changelog or how upgrade</p>
+<h1>example <a href="https://stripe.com/docs/upgrades">https://stripe.com/docs/upgrades</a></h1></li>
+<li><p>Чому портрібна документація</p>
+</li>
+<li><p>Як документувати АПІ
+  apiary.io
+  swagger.io
+  <a href="https://github.com/danielgtaylor/aglio">https://github.com/danielgtaylor/aglio</a>
+  <a href="https://github.com/tripit/slate">https://github.com/tripit/slate</a>
+  <a href="http://apidocjs.com/">http://apidocjs.com/</a></p>
+</li>
+<li><p>Usefull links
+<a href="https://github.com/marmelab/awesome-rest">https://github.com/marmelab/awesome-rest</a></p>
+</li>
+</ul>
 </section></div>
     </div>
 

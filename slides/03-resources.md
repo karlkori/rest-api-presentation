@@ -1,18 +1,9 @@
-## API URLs
+### Колекції / елементи
 
+- api.domain.ua/**customers**
 
-- **GET /cars**      	отримати список авто  
+- api.domain.ua/**customers/345**
 
-- **POST /cars**     	створити нове авто     
+- api.domain.ua/**invoices**
 
-- **PUT /cars**      	оновити дані про авто     
-
-- **DELETE /cars**   	видалити всі авто
-
-- **GET /cars/711**       отримати деталі конкретного авто
-
-- **POST /cars/711**      Method not allowed (405)
-
-- **PUT /cars/711**       оновити інфо для конкретного авто
-
-- **DELETE /cars/711**    видалити конкретне авто
+- api.domain.ua/**customers/345/subscriptons/**

@@ -1,1 +1,8 @@
 /* custom styles can go here */
+
+.reveal section img {
+   margin-bottom: -10px;
+   background: transparent; 
+   border: 0; 
+   box-shadow: none; 
+}
