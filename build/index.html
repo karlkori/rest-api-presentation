@@ -66,7 +66,7 @@
 </ul>
 </section>
 <section id="actions" class="slide">
-<h2>Actions</h2><ul>
+<h2>ДІЇ</h2><ul>
 <li><p><strong>GET /customers</strong>          <small> - отримати список клієнтів</small></p>
 </li>
 <li><p><strong>POST /customers</strong>         <small> - створити нового</small></p>
@@ -85,8 +85,35 @@
 </li>
 </ul>
 </section>
-<section>
-<section id="best-practice-names" class="slide">
+<section id="actions" class="slide">
+<h2>ДІЇ</h2><ul>
+<li><p><strong>GET</strong>          <small> - лише отримання даних, дані не змінюються</small></p>
+</li>
+<li><p><strong>POST/PUT/DELETE</strong>         <small> - зміна даних</small></p>
+</li>
+<li><p><strong>GET/PUT/DELETE</strong>          <small> - багаторазовий виклик не повинен мати ефекту!</small></p>
+</li>
+<li><p><strong>POST</strong></p>
+</li>
+</ul>
+</section>
+<section id="http-codes" class="slide">
+<h2>HTTP status codes</h2><ul>
+<li><p><strong>200</strong> – OK</p>
+</li>
+<li><p><strong>400</strong> – Bad Request</p>
+</li>
+<li><p><strong>401</strong> – Unauthorized <small>- користувач не авторизований</small></p>
+</li>
+<li><p><strong>403</strong> – Forbidden <small>- користувач не має прав доступу</small></p>
+</li>
+<li><p><strong>404</strong> – Not found</p>
+</li>
+<li><p>...</p>
+</li>
+</ul>
+</section>
+<section id="names" class="slide">
 <h2>Best practice</h2><h4>Використовувати в назві імена, не дії</h4><ul>
 <li><p><img src="images/ok.png" alt=""> <strong>/subscriptions</strong></p>
 </li>
@@ -96,10 +123,276 @@
 </li>
 </ul>
 </section>
+<section id="querying" class="slide">
+<h2>Best practice</h2><h4>фільтрація/пейджинг/сортування/...</h4><ul>
+<li><p>GET <strong>/cars</strong>?color=red</p>
+</li>
+<li><p>GET <strong>/cars</strong>?seats&lt;=2</p>
+</li>
+<li><p>GET <strong>/cars</strong>?sort=-manufactorer,+model</p>
+</li>
+<li><p>GET <strong>/cars</strong>?fields=manufacturer,model,id,color</p>
+</li>
+<li><p>GET <strong>/cars</strong>?offset=10&amp;limit=5</p>
+</li>
+</ul>
 </section>
-<section id="goodbye" class="slide">
-<h2>Goodbye</h2><p>Don&#39;t hesitate to give us feedback about <a href="https://github.com/lmtm/prez">prez on GitHub</a>!</p>
-<p>Thanks</p>
+<section id="nested" class="slide">
+<h2>Best practice</h2><h4>Вкладені або повязані колекції</h4><ul>
+<li><p>/<strong>users</strong>/123/<strong>tasks</strong></p>
+</li>
+<li><p>/<strong>customer</strong>/foxtrot/<strong>invoices</strong></p>
+</li>
+</ul>
+</section>
+<section id="expand" class="slide">
+<h2>Best practice</h2><h4>Можливість вернути одночасно дані, звязаної колекції</h4><p><strong>GET /tasks/123?expand=owner</strong></p>
+<pre><code class="lang-js">{
+    id: tsk_1234567890,
+    title: <span class="hljs-string">'Buy a milk'</span>,
+    owner: {
+        id: <span class="hljs-string">'usr_1234567890'</span>,
+        name: <span class="hljs-string">'John'</span>,
+        email: <span class="hljs-string">'john@vakoms.com.ua'</span>
+    }
+}
+</code></pre>
+</section>
+<section id="versioning" class="slide">
+<h2>Best practice</h2><h4>Версіонування</h4><ul>
+<li><p>/<strong>v1.2</strong>/cars/</p>
+</li>
+<li><p>/<strong>2015-07-24</strong>/cars/</p>
+</li>
+<li><p>/cars?<strong>version=1.2</strong></p>
+</li>
+<li><p>/cars/ + custom header: <strong>API-Version: 1.2</strong></p>
+</li>
+<li><p>/cars/ + accept header: <strong>application/vnd.api.v2+json</strong></p>
+</li>
+</ul>
+</section>
+<section id="content-type" class="slide">
+<h2>Best practice</h2><h4>Формат відповіді від сервера</h4><ul>
+<li><p>Content-type: application/json</p>
+</li>
+<li><p>Content-type: application/xml</p>
+</li>
+<li><p>/cars.json</p>
+</li>
+<li><p>/cars?format=xml</p>
+</li>
+</ul>
+</section>
+<section id="localization" class="slide">
+<h2>Best practice</h2><h4>Локалізація</h4><ul>
+<li><p>Клієнт робить запит і очікує дані в певній локалізації</p>
+<p>  <strong>Accept-Language: uk-UA</strong></p>
+</li>
+<li><p>Сервер віддає дані і вказує локалізацію</p>
+<p>  <strong>Content-Language: uk-UA</strong></p>
+</li>
+</ul>
+</section>
+<section id="standart-ok-response" class="slide">
+<h2>Best practice</h2><h4>Формат відповідь</h4><pre><code class="lang-js">Header: 
+    Content-type: application/json
+    ...    
+Status code: <span class="hljs-number">200</span>
+
+Body:
+
+{
+  <span class="hljs-string">"data"</span>: 
+   {
+        <span class="hljs-string">"id"</span>: <span class="hljs-string">"usr_1234567890"</span>,
+        <span class="hljs-string">"name"</span>: <span class="hljs-string">"John"</span>,
+        <span class="hljs-string">"email"</span>: <span class="hljs-string">"john@vakoms.com.ua"</span>,
+        <span class="hljs-string">"role"</span>: <span class="hljs-string">"author"</span>
+        ...
+   },
+   <span class="hljs-string">"links"</span> : {
+        ...
+   }
+}
+</code></pre>
+</section>
+<section id="standart-error-response" class="slide">
+<h2>Best practice</h2><h4>Помилки <small>(клієнта чи сервера)</small></h4><pre><code class="lang-js">Header: 
+    Content-type: application/json
+    ...    
+Status code: <span class="hljs-number">400</span>
+
+Body:
+
+{
+  <span class="hljs-string">"error"</span>: 
+   {
+        <span class="hljs-string">"message"</span>: <span class="hljs-string">"No car found in the database"</span>,
+        <span class="hljs-string">"developerMessage"</span>: <span class="hljs-string">"Еhe requested resource does not exist"</span>,
+        <span class="hljs-string">"type"</span>: <span class="hljs-string">"account-error"</span>
+        <span class="hljs-string">"code"</span>: <span class="hljs-number">34</span>,
+        <span class="hljs-string">"moreInfo"</span>: <span class="hljs-string">"http://dev.domain.com/api/v1/errors/34"</span>
+   }
+}
+</code></pre>
+</section>
+<section id="entities-ids" class="slide">
+<h2>Best practice</h2><h4>Використовуйте кастомні ІД для елементів ваших колекцій</h4><ul>
+<li><p><strong>job_d1a62016cba4ee83</strong></p>
+</li>
+<li><p><strong>usr_2d9b85fad42f64f8</strong></p>
+</li>
+<li><p><strong>adr_575a1b720bcdd6dc</strong></p>
+</li>
+</ul>
+</section>
+<section id="entities-ids-examples" class="slide">
+<h2>Best practice</h2><h4>Використовуйте кастомні ІД для елементів ваших колекцій</h4><ul>
+<li><p>/users/<strong>usr_12345</strong>/jobs/<strong>job_12345</strong></p>
+</li>
+<li><p>/customers/<strong>cus_2d9b85fad42f64f8</strong></p>
+</li>
+</ul>
+</section>
+<section id="request-id" class="slide">
+<h2>Best practice</h2><h4>ІД для кожного запиту</h4><p><small>можливов лише для важливих даних</small></p>
+<p>Header: <strong>Request-id: req_123445678</strong></p>
+</section>
+<section id="sync-request" class="slide">
+<h4>Синхронні операції</h4><p><small>Запит</small></p>
+<p>POST /users/usr_12345/subscriptions</p>
+<pre><code class="lang-js">{
+    <span class="hljs-string">"plan"</span>: <span class="hljs-string">"monthly"</span>,
+    <span class="hljs-string">"trial"</span>: <span class="hljs-literal">false</span>
+}
+</code></pre>
+</section>
+<section id="sync-request" class="slide">
+<h4>Синхронні операції</h4><p><small>Відповідь</small></p>
+<p>Headers:</p>
+<ul>
+<li><p>Status: 201 Created</p>
+</li>
+<li><p>Location: /tasks/tsk_12345</p>
+</li>
+</ul>
+</section>
+<section id="async-request" class="slide">
+<h4>Асинхронні операції</h4><p><small>Запит:</small></p>
+<p>POST /videos</p>
+<pre><code class="lang-js">{
+    <span class="hljs-string">"source"</span>: <span class="hljs-string">"https://aws.domain.com/home-video-ep-99.mp4"</span>,
+    <span class="hljs-string">"codec"</span>: <span class="hljs-string">"FFmpeg"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"encode-video"</span>
+}
+</code></pre>
+<p><small>Відповідь:</small></p>
+<p>Headers:</p>
+<ul>
+<li><p>Status: 202 Accepted</p>
+</li>
+<li><p>Location: /queue/32233</p>
+</li>
+</ul>
+</section>
+<section id="async-request" class="slide">
+<h4>Асинхронні операції</h4><p><small>Запит:</small></p>
+<p>GET /queue/32233 </p>
+<p><small>Відповідь:</small></p>
+<p>Headers:</p>
+<ul>
+<li>Status: 200</li>
+</ul>
+<pre><code class="lang-js">{
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"pending"</span>,
+    <span class="hljs-string">"eta"</span>: <span class="hljs-string">"1234567890"</span>
+}
+</code></pre>
+</section>
+<section id="async-request" class="slide">
+<h4>Асинхронні операції</h4><p><small>Запит:</small></p>
+<p>GET /queue/32233 </p>
+<p><small>Відповідь:</small></p>
+<p>Headers:</p>
+<ul>
+<li><p>Status: 303 See Other</p>
+</li>
+<li><p>Location: /videos/vid_12345</p>
+</li>
+</ul>
+</section>
+<section id="async-request" class="slide">
+<h4>Асинхронні операції</h4><p><small>Запит:</small></p>
+<p>DELETE /queue/32233 <small>- відміняємо дію </small></p>
+</section>
+<section id="why-to-document" class="slide">
+<h1>Для чого документувати?</h1>
+</section>
+<section id="how-to-document" class="slide">
+<h2>Як документувати?</h2><ul>
+<li><a href="http://apiary.io">http://apiary.io</a></li>
+<li><a href="http://swagger.io">http://swagger.io</a></li>
+<li><a href="http://apidocjs.com">http://apidocjs.com</a></li>
+<li><a href="https://github.com/danielgtaylor/aglio">https://github.com/danielgtaylor/aglio</a></li>
+<li><a href="https://github.com/tripit/slate">https://github.com/tripit/slate</a></li>
+<li><a href="https://www.google.com.ua/search?q=api+documentation+tools">https://www.google.com.ua/search?q=api+documentation+tools</a></li>
+</ul>
+</section>
+<section id="apiary" class="slide">
+<h2>Apiary.io</h2><p><img src="images/apiary.jpg" alt=""></p>
+</section>
+<section id="apiary-editor" class="slide">
+<h2>Apiary.io online editor</h2><p><img src="images/apiary-editor.jpg" alt=""></p>
+</section>
+<section id="swagger" class="slide">
+<h2>Swagger.io</h2><p><img src="images/swagger.jpg" alt=""></p>
+</section>
+<section id="swagger-editor" class="slide">
+<h2>Swagger.io online editor</h2><p><img src="images/swagger-editor.jpg" alt=""></p>
+</section>
+<section id="apidoc" class="slide">
+<h2>apidocjs.com</h2><p><img src="images/apidoc.jpg" alt=""></p>
+</section>
+<section id="apidoc-editor" class="slide">
+<h2>apidocjs.com</h2><p><img src="images/apidoc-editor.jpg" alt=""></p>
+</section>
+<section id="aglio-fitster" class="slide">
+<h2>Aglio</h2><p><img src="images/aglio-fitster.jpg" alt=""></p>
+</section>
+<section id="aglio-flat" class="slide">
+<h2>Aglio</h2><p><img src="images/aglio-flat.jpg" alt=""></p>
+</section>
+<section id="aglio-slate" class="slide">
+<h2>Aglio</h2><p><img src="images/aglio-slate.jpg" alt=""></p>
+</section>
+<section id="aglio-cyber" class="slide">
+<h2>Aglio</h2><p><img src="images/aglio-cyborg.jpg" alt=""></p>
+</section>
+<section id="slate" class="slide">
+<h2>Slate</h2><p><img src="images/slate.png" alt=""></p>
+</section>
+<section id="slate-stripe" class="slide">
+<h2>Slate</h2><p><img src="images/stripe.jpg" alt=""></p>
+</section>
+<section id="slate-travis-ci" class="slide">
+<h2>Slate</h2><p><img src="images/travic-ci.jpg" alt=""></p>
+</section>
+<section id="changelog" class="slide">
+<h2>Changelog</h2><p><img src="images/changelog-fubo.jpg" alt=""></p>
+</section>
+<section id="changelog" class="slide">
+<h2>Changelog</h2><p><img src="images/changelog-stripe.jpg" alt=""></p>
+</section>
+<section id="end-and-links" class="slide">
+<h2>Лінки</h2><ul>
+<li><a href="http://apiary.io">http://apiary.io</a></li>
+<li><a href="http://swagger.io">http://swagger.io</a></li>
+<li><a href="http://apidocjs.com/">http://apidocjs.com/</a></li>
+<li><a href="https://github.com/danielgtaylor/aglio">https://github.com/danielgtaylor/aglio</a></li>
+<li><a href="https://github.com/tripit/slate">https://github.com/tripit/slate</a></li>
+<li><a href="https://github.com/marmelab/awesome-rest">https://github.com/marmelab/awesome-rest</a></li>
+</ul>
 </section>
 <section id="best-practice" class="slide">
 <h2>Колекції/елементи</h2><ul>

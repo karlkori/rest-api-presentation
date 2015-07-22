@@ -1,0 +1,3 @@
+## Slate
+
+![](images/stripe.jpg)

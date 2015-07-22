@@ -1,4 +1,4 @@
-## Actions
+## ДІЇ
 
 - **GET /customers**      	<small> - отримати список клієнтів</small>
 
