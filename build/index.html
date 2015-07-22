@@ -15,10 +15,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
     <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/league.css" id="theme">
+    <link rel="stylesheet" href="css/theme/sky.css" id="theme">
 
     <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="css/highlight/styles/androidstudio.css" id="highlight-theme">
+    <link rel="stylesheet" href="css/highlight/styles/solarized_light.css" id="highlight-theme">
 
     <!-- Printing and PDF exports -->
     <script>
@@ -117,7 +117,7 @@
 <h1>Best practices</h1>
 </section>
 <section id="names" class="slide">
-<h2>Best practices</h2><h4>Використовувати в назві імена, не дії</h4><ul>
+<h4>Використовувати в назві імена, не дії</h4><ul>
 <li><p><img src="images/ok.png" alt=""> <strong>/subscriptions</strong></p>
 </li>
 <li><p><img src="images/wrong.png" alt=""> /subscribe</p>
@@ -127,7 +127,7 @@
 </ul>
 </section>
 <section id="querying" class="slide">
-<h2>Best practices</h2><h4>фільтрація/пейджинг/сортування/...</h4><ul>
+<h4>фільтрація/пейджинг/сортування/...</h4><ul>
 <li><p>GET <strong>/cars</strong>?color=red</p>
 </li>
 <li><p>GET <strong>/cars</strong>?seats&lt;=2</p>
@@ -141,7 +141,7 @@
 </ul>
 </section>
 <section id="nested" class="slide">
-<h2>Best practices</h2><h4>Вкладені або повязані колекції</h4><ul>
+<h4>Вкладені або повязані колекції</h4><ul>
 <li><p>/<strong>users</strong>/123/<strong>tasks</strong></p>
 </li>
 <li><p>/<strong>customer</strong>/foxtrot/<strong>invoices</strong></p>
@@ -149,7 +149,7 @@
 </ul>
 </section>
 <section id="expand" class="slide">
-<h2>Best practices</h2><h4>Можливість вернути одночасно дані, звязаної колекції</h4><p><strong>GET /tasks/123?expand=owner</strong></p>
+<h4>Можливість вернути одночасно дані, звязаної колекції</h4><p><strong>GET /tasks/123?expand=owner</strong></p>
 <pre><code class="lang-js">{
     id: tsk_1234567890,
     title: <span class="hljs-string">'Buy a milk'</span>,
@@ -162,7 +162,7 @@
 </code></pre>
 </section>
 <section id="versioning" class="slide">
-<h2>Best practices</h2><h4>Версіонування</h4><ul>
+<h4>Версіонування</h4><ul>
 <li><p>/<strong>v1.2</strong>/cars/</p>
 </li>
 <li><p>/<strong>2015-07-24</strong>/cars/</p>
@@ -176,7 +176,7 @@
 </ul>
 </section>
 <section id="content-type" class="slide">
-<h2>Best practices</h2><h4>Формат відповіді від сервера</h4><ul>
+<h4>Формат відповіді від сервера</h4><ul>
 <li><p>Content-type: application/json</p>
 </li>
 <li><p>Content-type: application/xml</p>
@@ -188,7 +188,7 @@
 </ul>
 </section>
 <section id="localization" class="slide">
-<h2>Best practices</h2><h4>Локалізація</h4><ul>
+<h4>Локалізація</h4><ul>
 <li><p>Клієнт робить запит і очікує дані в певній локалізації</p>
 <p>  <strong>Accept-Language: uk-UA</strong></p>
 </li>
@@ -198,7 +198,7 @@
 </ul>
 </section>
 <section id="standart-ok-response" class="slide">
-<h2>Best practices</h2><h4>Формат відповідь</h4><pre><code class="lang-js">Header: 
+<h4>Формат відповідь</h4><pre><code class="lang-js">Header: 
     Content-type: application/json
     ...    
 Status code: <span class="hljs-number">200</span>
@@ -221,7 +221,7 @@ Body:
 </code></pre>
 </section>
 <section id="standart-error-response" class="slide">
-<h2>Best practices</h2><h4>Помилки <small>(клієнта чи сервера)</small></h4><pre><code class="lang-js">Header: 
+<h4>Помилки <small>(клієнта чи сервера)</small></h4><pre><code class="lang-js">Header: 
     Content-type: application/json
     ...    
 Status code: <span class="hljs-number">400</span>
@@ -241,7 +241,7 @@ Body:
 </code></pre>
 </section>
 <section id="entities-ids" class="slide">
-<h2>Best practices</h2><h4>Використовуйте кастомні ІД для елементів ваших колекцій</h4><ul>
+<h4>Використовуйте кастомні ІД для елементів ваших колекцій</h4><ul>
 <li><p><strong>job_d1a62016cba4ee83</strong></p>
 </li>
 <li><p><strong>usr_2d9b85fad42f64f8</strong></p>
@@ -251,7 +251,7 @@ Body:
 </ul>
 </section>
 <section id="entities-ids-examples" class="slide">
-<h2>Best practices</h2><h4>Використовуйте кастомні ІД для елементів ваших колекцій</h4><ul>
+<h4>Використовуйте кастомні ІД для елементів ваших колекцій</h4><ul>
 <li><p>/users/<strong>usr_12345</strong>/jobs/<strong>job_12345</strong></p>
 </li>
 <li><p>/customers/<strong>cus_2d9b85fad42f64f8</strong></p>
@@ -259,7 +259,7 @@ Body:
 </ul>
 </section>
 <section id="request-id" class="slide">
-<h2>Best practices</h2><h4>ІД для кожного запиту</h4><p><small>можливо лише для важливих даних</small></p>
+<h4>ІД для кожного запиту</h4><p><small>можливо лише для важливих даних</small></p>
 <p>Response Header: <strong>Request-id: req_123445678</strong></p>
 </section>
 <section id="sync-request" class="slide">
@@ -426,146 +426,6 @@ Body:
 <li><a href="https://github.com/danielgtaylor/aglio">https://github.com/danielgtaylor/aglio</a></li>
 <li><a href="https://github.com/tripit/slate">https://github.com/tripit/slate</a></li>
 <li><a href="https://github.com/marmelab/awesome-rest">https://github.com/marmelab/awesome-rest</a></li>
-</ul>
-</section>
-<section id="best-practice" class="slide">
-<h2>Колекції/елементи</h2><ul>
-<li><p>використовувати в назві імена, не дії</p>
-<p>  <strong>/cars</strong></p>
-<p>  <del>/getInfoAboutAllCars</del></p>
-</li>
-<li><p>назва в множині <small>(або в однині, але одне правило на всі колекції)</small></p>
-</li>
-<li><p>дії з колекцією/елементом передавати через HTTP method</p>
-<ul>
-<li>GET - лише вертає дані, нічого не змінює!</li>
-<li>POST</li>
-<li>PUT - оновлення конкретних даних, багаторазовий виклик не має змінювати дані по рзному</li>
-<li>DELETE - багаторазове повторення не повинно мати ефекту<h2>API URLs</h2></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p><strong>GET /cars</strong>          отримати список авто</p>
-</li>
-<li><p><strong>POST /cars</strong>         створити нове авто</p>
-</li>
-<li><p><strong>PUT /cars</strong>          оновити дані про авто</p>
-</li>
-<li><p><strong>DELETE /cars</strong>       видалити всі авто</p>
-</li>
-<li><p><strong>GET /cars/711</strong>       отримати деталі конкретного авто</p>
-</li>
-<li><p><strong>POST /cars/711</strong>      Method not allowed (405)</p>
-</li>
-<li><p><strong>PUT /cars/711</strong>       оновити інфо для конкретного авто</p>
-</li>
-<li><p><strong>DELETE /cars/711</strong>    видалити конкретне авто</p>
-</li>
-<li><p>вкладені або повязані колекції</p>
-<p>  /users/123/tasks</p>
-<p>  /users/123/bugs</p>
-</li>
-<li><p>фільтр вихідних даних</p>
-<p>  /users/123?fields=id,name,email</p>
-</li>
-<li><p>можливість вернути одночасно дані, звязаної колекції</p>
-<p>  /users/123?expand=tasks</p>
-</li>
-</ul>
-<pre><code class="lang-json">GET /task/123
-{
-    data: {
-        id: 123,
-        title: &#39;Buy a milk&#39;,
-        owner: &#39;usr_1234567890&#39;
-    }
-}
-
-GET /task/123?expand=owner
-{
-    data: {
-        id: 123,
-        title: &#39;Buy a milk&#39;,
-        owner: {
-            id: &#39;usr_1234567890&#39;,
-            name: &#39;John&#39;,
-            email: &#39;john@gmail.com&#39;
-        }
-    }
-}
-</code></pre>
-<ul>
-<li>пейджинг, умовні фільтри</li>
-</ul>
-<p>GET /cars?color=red Returns a list of red cars
-GET /cars?seats&lt;=2 Returns a list of cars with a maximum of 2 seats
-GET /cars?sort=-manufactorer,+model
-GET /cars?fields=manufacturer,model,id,color
-GET /cars?offset=10&amp;limit=5</p>
-<ul>
-<li><p>версіонуваня</p>
-<p>  /v1.2/cars/</p>
-<p>  /2015-07-24/cars/</p>
-<p>  /cars/    + headers v1.2</p>
-<p>  /cars?version=1.2</p>
-</li>
-<li><p>формат даних</p>
-<p>  Headers: Content-type: application/json</p>
-<p>  /cars.json</p>
-<p>  /cars?format=xml</p>
-</li>
-<li><p>Use HTTP status codes</p>
-<p>  200 – OK</p>
-<p>  201 – OK + New resource has been created</p>
-<p>  400 – Bad Request – The request was invalid or cannot be served. The exact error should be explained in the error payload. E.g. „The JSON is not valid“</p>
-<p>  401 – Unauthorized – The request requires an user authentication</p>
-<p>  403 – Forbidden – The server understood the request, but is refusing it or the access is not allowed.</p>
-<p>  404 – Not found – There is no resource behind the URI.</p>
-<p>  405 - Method not allowed, used to indicate that the requested URL exists, but the requested HTTP method is not applicable.    </p>
-</li>
-<li><p>Example of error response:</p>
-</li>
-</ul>
-<pre><code class="lang-json">{
-  "<span class="hljs-attribute">error</span>": 
-   <span class="hljs-value">{
-        "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Sorry, the requested resource does not exist"</span></span>,
-        "<span class="hljs-attribute">developerMessage</span>": <span class="hljs-value"><span class="hljs-string">"No car found in the database"</span></span>,
-        "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">34</span></span>,
-        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"account-error"</span>
-        <span class="hljs-string">"moreInfo"</span>: <span class="hljs-string">"http://dev.example.com/api/v1/errors/34"</span>
-   </span>}
-</span>}
-</code></pre>
-<ul>
-<li><p>Make your IDs easily understood and descriptive:</p>
-<p>  job_d1a62016cba4ee83
-  obj_2d9b85fad42f64f8
-  adr_575a1b720bcdd6dc</p>
-</li>
-<li><p>Request IDs Header: Request-id: 123445678</p>
-</li>
-<li><p>for localization response</p>
-</li>
-</ul>
-<h1>client request data with EN translation</h1><p>Accept-Language: en</p>
-<h1>server response data</h1><p>Content-Language: en</p>
-<ul>
-<li><p>usefull page in documentation: changelog or how upgrade</p>
-<h1>example <a href="https://stripe.com/docs/upgrades">https://stripe.com/docs/upgrades</a></h1></li>
-<li><p>Чому портрібна документація</p>
-</li>
-<li><p>Як документувати АПІ
-  apiary.io
-  swagger.io
-  <a href="https://github.com/danielgtaylor/aglio">https://github.com/danielgtaylor/aglio</a>
-  <a href="https://github.com/tripit/slate">https://github.com/tripit/slate</a>
-  <a href="http://apidocjs.com/">http://apidocjs.com/</a></p>
-</li>
-<li><p>Usefull links
-<a href="https://github.com/marmelab/awesome-rest">https://github.com/marmelab/awesome-rest</a></p>
-</li>
 </ul>
 </section></div>
     </div>

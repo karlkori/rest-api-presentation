@@ -1,5 +1,3 @@
-## Best practices
-
 #### Помилки <small>(клієнта чи сервера)</small>
 
 ```js

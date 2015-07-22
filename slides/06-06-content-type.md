@@ -1,5 +1,3 @@
-## Best practices
-
 #### Формат відповіді від сервера
 	
 - Content-type: application/json

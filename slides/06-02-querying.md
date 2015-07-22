@@ -1,5 +1,3 @@
-## Best practices
-
 #### фільтрація/пейджинг/сортування/...
 	
 - GET **/cars**?color=red

@@ -1,5 +1,3 @@
-## Best practices
-
 #### Використовувати в назві імена, не дії
 	
 - ![](images/ok.png) **/subscriptions**

@@ -2,7 +2,7 @@
   "title": "Rest API",
   "author": "",
   "description": "",
-  "theme": "league",
-  "highlightTheme": "androidstudio",
+  "theme": "sky",
+  "highlightTheme": "solarized_light",
   "printTheme": "simple"
 }
