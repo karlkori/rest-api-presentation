@@ -113,8 +113,11 @@
 </li>
 </ul>
 </section>
+<section id="best-practices" class="slide">
+<h1>Best practices</h1>
+</section>
 <section id="names" class="slide">
-<h2>Best practice</h2><h4>Використовувати в назві імена, не дії</h4><ul>
+<h2>Best practices</h2><h4>Використовувати в назві імена, не дії</h4><ul>
 <li><p><img src="images/ok.png" alt=""> <strong>/subscriptions</strong></p>
 </li>
 <li><p><img src="images/wrong.png" alt=""> /subscribe</p>
@@ -124,7 +127,7 @@
 </ul>
 </section>
 <section id="querying" class="slide">
-<h2>Best practice</h2><h4>фільтрація/пейджинг/сортування/...</h4><ul>
+<h2>Best practices</h2><h4>фільтрація/пейджинг/сортування/...</h4><ul>
 <li><p>GET <strong>/cars</strong>?color=red</p>
 </li>
 <li><p>GET <strong>/cars</strong>?seats&lt;=2</p>
@@ -138,7 +141,7 @@
 </ul>
 </section>
 <section id="nested" class="slide">
-<h2>Best practice</h2><h4>Вкладені або повязані колекції</h4><ul>
+<h2>Best practices</h2><h4>Вкладені або повязані колекції</h4><ul>
 <li><p>/<strong>users</strong>/123/<strong>tasks</strong></p>
 </li>
 <li><p>/<strong>customer</strong>/foxtrot/<strong>invoices</strong></p>
@@ -146,7 +149,7 @@
 </ul>
 </section>
 <section id="expand" class="slide">
-<h2>Best practice</h2><h4>Можливість вернути одночасно дані, звязаної колекції</h4><p><strong>GET /tasks/123?expand=owner</strong></p>
+<h2>Best practices</h2><h4>Можливість вернути одночасно дані, звязаної колекції</h4><p><strong>GET /tasks/123?expand=owner</strong></p>
 <pre><code class="lang-js">{
     id: tsk_1234567890,
     title: <span class="hljs-string">'Buy a milk'</span>,
@@ -159,7 +162,7 @@
 </code></pre>
 </section>
 <section id="versioning" class="slide">
-<h2>Best practice</h2><h4>Версіонування</h4><ul>
+<h2>Best practices</h2><h4>Версіонування</h4><ul>
 <li><p>/<strong>v1.2</strong>/cars/</p>
 </li>
 <li><p>/<strong>2015-07-24</strong>/cars/</p>
@@ -173,7 +176,7 @@
 </ul>
 </section>
 <section id="content-type" class="slide">
-<h2>Best practice</h2><h4>Формат відповіді від сервера</h4><ul>
+<h2>Best practices</h2><h4>Формат відповіді від сервера</h4><ul>
 <li><p>Content-type: application/json</p>
 </li>
 <li><p>Content-type: application/xml</p>
@@ -185,7 +188,7 @@
 </ul>
 </section>
 <section id="localization" class="slide">
-<h2>Best practice</h2><h4>Локалізація</h4><ul>
+<h2>Best practices</h2><h4>Локалізація</h4><ul>
 <li><p>Клієнт робить запит і очікує дані в певній локалізації</p>
 <p>  <strong>Accept-Language: uk-UA</strong></p>
 </li>
@@ -195,7 +198,7 @@
 </ul>
 </section>
 <section id="standart-ok-response" class="slide">
-<h2>Best practice</h2><h4>Формат відповідь</h4><pre><code class="lang-js">Header: 
+<h2>Best practices</h2><h4>Формат відповідь</h4><pre><code class="lang-js">Header: 
     Content-type: application/json
     ...    
 Status code: <span class="hljs-number">200</span>
@@ -218,7 +221,7 @@ Body:
 </code></pre>
 </section>
 <section id="standart-error-response" class="slide">
-<h2>Best practice</h2><h4>Помилки <small>(клієнта чи сервера)</small></h4><pre><code class="lang-js">Header: 
+<h2>Best practices</h2><h4>Помилки <small>(клієнта чи сервера)</small></h4><pre><code class="lang-js">Header: 
     Content-type: application/json
     ...    
 Status code: <span class="hljs-number">400</span>
@@ -238,7 +241,7 @@ Body:
 </code></pre>
 </section>
 <section id="entities-ids" class="slide">
-<h2>Best practice</h2><h4>Використовуйте кастомні ІД для елементів ваших колекцій</h4><ul>
+<h2>Best practices</h2><h4>Використовуйте кастомні ІД для елементів ваших колекцій</h4><ul>
 <li><p><strong>job_d1a62016cba4ee83</strong></p>
 </li>
 <li><p><strong>usr_2d9b85fad42f64f8</strong></p>
@@ -248,7 +251,7 @@ Body:
 </ul>
 </section>
 <section id="entities-ids-examples" class="slide">
-<h2>Best practice</h2><h4>Використовуйте кастомні ІД для елементів ваших колекцій</h4><ul>
+<h2>Best practices</h2><h4>Використовуйте кастомні ІД для елементів ваших колекцій</h4><ul>
 <li><p>/users/<strong>usr_12345</strong>/jobs/<strong>job_12345</strong></p>
 </li>
 <li><p>/customers/<strong>cus_2d9b85fad42f64f8</strong></p>
@@ -256,8 +259,8 @@ Body:
 </ul>
 </section>
 <section id="request-id" class="slide">
-<h2>Best practice</h2><h4>ІД для кожного запиту</h4><p><small>можливов лише для важливих даних</small></p>
-<p>Header: <strong>Request-id: req_123445678</strong></p>
+<h2>Best practices</h2><h4>ІД для кожного запиту</h4><p><small>можливо лише для важливих даних</small></p>
+<p>Response Header: <strong>Request-id: req_123445678</strong></p>
 </section>
 <section id="sync-request" class="slide">
 <h4>Синхронні операції</h4><p><small>Запит</small></p>
@@ -326,11 +329,42 @@ Body:
 <h4>Асинхронні операції</h4><p><small>Запит:</small></p>
 <p>DELETE /queue/32233 <small>- відміняємо дію </small></p>
 </section>
+<section id="rate-limit" class="slide">
+<h4>Rate limit</h4><p>На кожен запит сервер повертає заголовки:</p>
+<p>Headers:</p>
+<ul>
+<li><strong>Rate-Limit</strong>: <small> макс. к-ть запитів в первний час (хвилину)</small></li>
+<li><strong>Rate-Remaining</strong>: <small>скільки запитів ще залишилось до блокування</small></li>
+<li><strong>Rate-Reset</strong>: <small>скільки секунд залишилось до оновлення ліміту</small></li>
+</ul>
+<p>Якщо ваша програма перевищить ліміт запитів, сервер має вернути </p>
+<p>Headers:</p>
+<ul>
+<li>Status code: 429 </li>
+<li>Retry-After: 1000 <small>к-ть секунд через яку можна повторити запит</small></li>
+</ul>
+</section>
+<section id="auth" class="slide">
+<h1>Авторизація</h1>
+</section>
+<section id="auth" class="slide">
+<h4>Авторизація</h4><ul>
+<li><p><strong>Basic Auth</strong> <small> в хеадерах шлем логін/пароль на кожен запит </small></p>
+</li>
+<li><p><strong>Auth by token</strong> <small> JWT </small></p>
+</li>
+<li><p><strong>OAuth 2</strong> <small> окремий сервіс авторизації </small></p>
+</li>
+</ul>
+</section>
 <section id="why-to-document" class="slide">
 <h1>Для чого документувати?</h1>
 </section>
+<section id="do-not-do-this" class="slide">
+<p><img src="images/google-docs-api-doc.jpg" alt=""></p>
+</section>
 <section id="how-to-document" class="slide">
-<h2>Як документувати?</h2><ul>
+<h2>Як документувати</h2><ul>
 <li><a href="http://apiary.io">http://apiary.io</a></li>
 <li><a href="http://swagger.io">http://swagger.io</a></li>
 <li><a href="http://apidocjs.com">http://apidocjs.com</a></li>

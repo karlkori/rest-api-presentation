@@ -1,4 +1,4 @@
-## Best practice
+## Best practices
 
 #### Використовувати в назві імена, не дії
 	

@@ -1,6 +1,6 @@
-## Best practice
+## Best practices
 
 #### ІД для кожного запиту 
-<small>можливов лише для важливих даних</small>
+<small>можливо лише для важливих даних</small>
 
-Header: **Request-id: req_123445678**
+Response Header: **Request-id: req_123445678**

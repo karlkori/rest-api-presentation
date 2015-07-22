@@ -1,4 +1,4 @@
-## Best practice
+## Best practices
 
 #### Помилки <small>(клієнта чи сервера)</small>
 
